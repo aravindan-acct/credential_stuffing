@@ -22,11 +22,11 @@ login_url = args.url
 print(login_url)
 for cred in json.loads(credentials):
     if args.auth_type == "form":
-        login_request = requests.post(login_url, data=cred)
+        login_request = requests.post(login_url, data=cred, verify=False)
         print(login_request.status_code)
     elif args.auth_type == "json":
         headers = {"Content-Type": "application/json"}
-        login_request = requests.post(login_url, data = json.dumps(cred), headers=headers)
+        login_request = requests.post(login_url, data = json.dumps(cred), headers=headers, verify=False)
         print(login_request.status_code)
     else:
         print("invalid input")
